@@ -1,0 +1,17 @@
+/* 1. Custom font for "GM" – adcure.otf (OpenType format) */
+@font-face {
+    font-family: 'AdCure';
+    src: url('./assets/fonts/adcure.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;   /* Improves loading – text shows quickly with fallback */
+}
+
+/* 2. Custom font for "Painting Contractors" – Montserrat-Bold.ttf */
+@font-face {
+    font-family: 'MontserratBold';
+    src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
