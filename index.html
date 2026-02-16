@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
+ <style>
         /* CSS Reset & Base */
         * {
             margin: 0;
@@ -63,48 +63,7 @@
         }
         
         :root {
-            /* Dark Mode Color Variables (Default) */
-            --bg-primary: #121212;
-            --card-bg: #18181B;
-            --text-primary: #F1F5F9;
-            --text-secondary: #E2E8F0;
-            --accent: #EF4444;
-            --accent-hover: #DC2626;
-            --accent-secondary: #F59E0B;
-            --success: #10B981;
-            --overlay-bg: rgba(18, 18, 18, 0.95);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            
-            /* Typography */
-            --font-main: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            --font-heading: 'Georgia', serif;
-            
-            /* Spacing */
-            --section-padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;
-            --card-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-        
-        @font-face {
-            font-family: 'AdCure';
-            src: url('./assets/fonts/adcure.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;   /* Improves loading – text shows quickly with fallback */
-        }
-
-        /* 2. Custom font for "Painting Contractors" – Montserrat-Bold.ttf */
-        @font-face {
-            font-family: 'MontserratBold';
-            src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        /* Light Mode Variables e0e2e5d9 */
-        body.light-mode {
+            /* Light Mode Color Variables (Default) */
             --bg-primary: #e0e2e5d9;
             --card-bg: #e0e2e5d9;
             --text-primary: #1e293b;
@@ -116,6 +75,46 @@
             --overlay-bg: rgba(248, 250, 252, 0.95);
             --border-color: rgba(0, 0, 0, 0.1);
             --shadow-color: rgba(0, 0, 0, 0.05);
+            
+            /* Typography */
+            --font-main: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            --font-heading: 'Georgia', serif;
+            
+            /* Spacing */
+            --section-padding: clamp(2.5rem, 5vw, 4rem) 1.5rem;
+            --card-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --bg-primary: #121212;
+            --card-bg: #18181B;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --accent: #EF4444;
+            --accent-hover: #DC2626;
+            --accent-secondary: #F59E0B;
+            --success: #10B981;
+            --overlay-bg: rgba(18, 18, 18, 0.95);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        @font-face {
+            font-family: 'AdCure';
+            src: url('./assets/fonts/adcure.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'MontserratBold';
+            src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
         }
         
         html {
@@ -154,19 +153,19 @@
             transform: scale(1.1);
         }
         
+        /* Default (light mode) – show moon (switch to dark) */
         .theme-toggle .sun-icon {
             display: none;
         }
-        
         .theme-toggle .moon-icon {
             display: block;
         }
         
-        body.light-mode .theme-toggle .sun-icon {
+        /* Dark mode – show sun (switch to light) */
+        body.dark-mode .theme-toggle .sun-icon {
             display: block;
         }
-        
-        body.light-mode .theme-toggle .moon-icon {
+        body.dark-mode .theme-toggle .moon-icon {
             display: none;
         }
         
@@ -228,7 +227,7 @@
             left: 0;
             width: 100%;
             padding: 1rem 1.5rem;
-            background-color: rgba(18, 18, 18, 0.85);
+            background-color: rgba(248, 250, 252, 0.85);
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: flex;
@@ -237,125 +236,91 @@
             transition: var(--transition);
         }
         
-        body.light-mode header {
-            background-color: rgba(248, 250, 252, 0.85);
+        body.dark-mode header {
+            background-color: rgba(18, 18, 18, 0.85);
         }
         
         header.scrolled {
             padding: 0.7rem 1.5rem;
-            background-color: rgba(18, 18, 18, 0.95);
-        }
-        
-        body.light-mode header.scrolled {
             background-color: rgba(248, 250, 252, 0.95);
         }
         
-/*        .logo-container {
+        body.dark-mode header.scrolled {
+            background-color: rgba(18, 18, 18, 0.95);
+        }
+
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
         
         .logo-img {
-            height: 40px;
+            height: 80px;
+            width: auto;
+            border-radius: 4px;
+        }
+        
+        .logo-img-lrg {
+            display: flex;
+            align-items: center;
             width: auto;
             border-radius: 4px;
         }
         
         .logo-text {
-            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
             font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
-        .logo-text span {
-            color: var(--accent);
-        }*/
+        .gm-wrap {
+            display: inline-flex;
+            align-items: baseline;
+        }
+        
+        .g {
+            color: #e5352c; /* Red */
+            text-shadow: 
+                0.05em 0.05em 0 #c42e26,
+                0.1em 0.1em 0 #b32b23,
+                0.15em 0.15em 0 #a22720,
+                0.2em 0.2em 0 #91241c,
+                0.25em 0.25em 0 #802019;
 
-
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.logo-img {
-    height: 80px;
-    width: auto;
-    border-radius: 4px;
-}
-
-.logo-img-lrg {
-    display: flex;
-    align-items: center;
-/*    height: 100px;*/
-    width: auto;
-    border-radius: 4px;
-}
-
-.logo-text {
-    font-size: clamp(1.3rem, 3.5vw, 1.8rem);   /* ← base size for GM — adjust vw values if needed */
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.gm-wrap {
-    display: inline-flex;
-    align-items: baseline;
-}
-
-.g,
-.m {
-    font-size: clamp(2.3rem, 3.5vw, 1.8rem);
-    font-family: 'AdCure';   /* ← uses the OTF font */
-    /* your existing color, size, etc. */
-}
-
-.slogan {
-    font-size: clamp(0.7rem, 0.5vw, 0.8rem);
-    font-family: 'MontserratBold', 'Montserrat', Arial, sans-serif;   /* ← uses the TTF font + fallbacks */
-    /* your existing color, size, uppercase, etc. */
-
-/* Underline in red */
-    text-decoration-line: underline;
-    text-decoration-color: #e5352c;    /* your vivid red from the G */
-    text-decoration-thickness: 2px;    /* optional: make it bolder/thicker – adjust 1px–3px */
-    text-underline-offset: 3px;        /* optional: space between text and line – prevents crowding */
-
-
-}
-
-
-.slogan:hover {
-    text-decoration-color: #c62828;   /* darker red on hover */
-    color: #e5352c;                   /* optional: make text red too on hover */
-}
-
-
-/* Optional: darken on dark mode if you have one */
-@media (prefers-color-scheme: dark) {
-    .g { color: #e5352c; }               /* lighter red variant for dark mode */
-    .m, .slogan { color: #58595b; }     /* lighter grey variant */
-}
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+        .m {
+            color: #58595b; /* Gray */
+            font-size: clamp(2.3rem, 3.5vw, 1.8rem);
+            font-family: 'AdCure';
+        }
+        
+        .slogan {
+            font-size: clamp(0.7rem, 0.5vw, 0.8rem);
+            font-family: 'MontserratBold', 'Montserrat', Arial, sans-serif;
+            text-decoration-line: underline;
+            text-decoration-color: #e5352c;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+        
+        .slogan:hover {
+            text-decoration-color: #c62828;
+            color: #e5352c;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .g { color: #e5352c; }
+            .m, .slogan { color: #58595b; }
+        }
         
         .nav-links {
-    font-family: 'AdCure';   /* ← uses the OTF font */
+/*            font-family: 'AdCure';*/
+            font-family: 'MontserratBold', 'Montserrat', Arial, sans-serif;
             display: flex;
             gap: 0.5rem;
             list-style: none;
@@ -427,7 +392,7 @@
             color: var(--accent);
         }
         
-        /* Vertical Pagination Dots - Updated with new sections */
+        /* Vertical Pagination Dots */
         .pagination-dots {
             position: fixed;
             right: 2rem;
@@ -501,19 +466,19 @@
             height: 100%;
             background: linear-gradient(
                 135deg,
-                rgba(18, 18, 18, 0.85) 0%,
-                rgba(18, 18, 18, 0.6) 50%,
-                rgba(18, 18, 18, 0.85) 100%
+                rgba(18, 18, 18, 0.6) 0%,
+                rgba(18, 18, 18, 0.4) 50%,
+                rgba(18, 18, 18, 0.6) 100%
             );
             z-index: 1;
         }
         
-        body.light-mode .video-overlay {
+        body.dark-mode .video-overlay {
             background: linear-gradient(
                 135deg,
-                rgba(18, 18, 18, 0.6) 0%,
-                rgba(18, 18, 18, 0.4) 50%,
-                rgba(18, 18, 18, 0.6) 100%
+                rgba(18, 18, 18, 0.85) 0%,
+                rgba(18, 18, 18, 0.6) 50%,
+                rgba(18, 18, 18, 0.85) 100%
             );
         }
         
@@ -522,9 +487,16 @@
             position: relative;
             z-index: 2;
             transform: translateZ(0);
+            color: white;
+
+        }
+        
+        .hero-content h2{
+            color: white;
         }
         
         .hero-content p {
+            color: white;
             font-size: clamp(1.1rem, 3vw, 1.3rem);
             margin-bottom: 2.5rem;
             max-width: 600px;
@@ -679,14 +651,14 @@
         
         .services-list li {
             padding: 0.8rem;
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 0, 0, 0.03);
             border-radius: 8px;
             text-align: center;
             transition: var(--transition);
         }
         
-        body.light-mode .services-list li {
-            background-color: rgba(0, 0, 0, 0.03);
+        body.dark-mode .services-list li {
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
         .services-list li:hover {
@@ -1152,7 +1124,7 @@
         .form-group textarea,
         .form-group select {
             padding: 1rem;
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 0, 0, 0.03);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             color: var(--text-primary);
@@ -1161,10 +1133,10 @@
             transition: var(--transition);
         }
         
-        body.light-mode .form-group input,
-        body.light-mode .form-group textarea,
-        body.light-mode .form-group select {
-            background-color: rgba(0, 0, 0, 0.03);
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea,
+        body.dark-mode .form-group select {
+            background-color: rgba(0, 0, 0, 0.05);
         }
         
         .form-group input:focus,
@@ -1185,15 +1157,15 @@
         
         /* Footer */
         footer {
-            background-color: #0a0a0a;
+            background-color: #e2e8f0;
             padding: 3rem 1.5rem;
             text-align: center;
             border-top: 1px solid var(--border-color);
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         
-        body.light-mode footer {
-            background-color: #e2e8f0;
+        body.dark-mode footer {
+            background-color: #0a0a0a;
         }
         
         .footer-content {
@@ -1275,7 +1247,6 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             
-            /* Enhanced video parallax for desktop */
             .hero-video {
                 position: fixed;
                 height: 110%;
@@ -1484,90 +1455,93 @@
 
 
 
-/*.social-icons a {
-    transition: all 0.3s ease;
-}*/
+        /* Social Media Icons */
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
 
-/*.social-icons a:hover {
-    transform: scale(1.15);
-}*/
-
-
-
-
-
-/* Social Media Icons */
-.social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(239, 68, 68, 0.1);
-    transition: var(--transition);
-}
-
-/*.social-icons a:hover {
-    background-color: var(--accent);
-    color: white;
-    transform: translateY(-3px);
-}*/
-
-/* Optional: brand-specific hover colors */
-.social-icons a[href*="facebook"]:hover {
-    transform: scale(1.45);
-    background-color: #1877f2;
-    color: #1877f2;
-}
-.social-icons a[href*="instagram"]:hover {
-    transform: scale(1.45);
-    background-color: #e1306c;
-    color: #e1306c;
-}
-.social-icons a[href*="linkedin"]:hover {
-    transform: scale(1.45);
-    background-color: #0a66c2;
-    color: #0a66c2;
-}
-.social-icons a[href*="twitter"]:hover,
-.social-icons a[href*="x.com"]:hover    {
-    transform: scale(1.45);
-    background-color: #000000;
-    color: #000000;
-} /* X is black now */
-.social-icons a[href*="wa.me"]:hover     {
-    transform: scale(1.45);
-    background-color: #25d366;
-    color: #25d366;
-}
+        body.dark-mode .social-icons a {
+            background-color: rgba(239, 68, 68, 0.1);
+        }
 
 
-body.light-mode .social-icons a {
-    background-color: rgba(0, 0, 0, 0.05);
-}
+        /* Brand-specific hover colors */
+        .social-icons a[href*="facebook"] {
+            transform: scale(1.45);
+            color: #1877f2;
+        }
+        .social-icons a[href*="instagram"] {
+            transform: scale(1.45);
+            color: #e1306c;
+        }
+        .social-icons a[href*="linkedin"] {
+            transform: scale(1.45);
+            color: #0a66c2;
+        }
+        .social-icons a[href*="twitter"],
+        .social-icons a[href*="x.com"] {
+            transform: scale(1.45);
+            color: #000000;
+        }
+        .social-icons a[href*="wa.me"] {
+            transform: scale(1.45);
+            color: #25d366;
+        }
 
 
-
-        
+        /* Brand-specific hover colors */
+        .social-icons a[href*="facebook"]:hover {
+            transform: scale(1.45);
+            background-color: #1877f2;
+            color: #ffffff;
+        }
+        .social-icons a[href*="instagram"]:hover {
+            transform: scale(1.45);
+            background-color: #e1306c;
+            color: #ffffff;
+        }
+        .social-icons a[href*="linkedin"]:hover {
+            transform: scale(1.45);
+            background-color: #0a66c2;
+            color: #0a66c2;
+        }
+        .social-icons a[href*="twitter"]:hover,
+        .social-icons a[href*="x.com"]:hover {
+            transform: scale(1.45);
+            background-color: #000000;
+            color: #000000;
+        }
+        .social-icons a[href*="wa.me"]:hover {
+            transform: scale(1.45);
+            background-color: #25d366;
+            color: #ffffff;
+        }
     </style>
 
 </head>
-<body class="dark-mode">
+<!-- <body class="dark-mode"> -->
+<body class="light-mode">
     <!-- Header & Navigation -->
     <header id="mainHeader">
         <div class="logo-container">
-            <img src="./assets/img/logo.png" alt="GM Painting Contractors Logo - Professional Painters Cape Town" class="logo-img">
+            <img src="./assets/img/logo_full.png" alt="GM Painting Contractors Logo - Professional Painters Cape Town" class="logo-img">
 
             <!-- <div class="logo-text"><span>GM</span> Painting Contractors</div> -->
 
-
+<!-- 
             <div class="logo-text">
                 <span class="gm-wrap">
                     <span class="g">G</span><span class="m">M</span>
                 </span>
                 <span class="slogan">PAINTING CONTRACTORS</span>
-            </div>
+            </div> -->
 
 
 
@@ -1631,19 +1605,23 @@ body.light-mode .social-icons a {
             <div class="video-overlay"></div>
             
             <!-- Video Controls -->
-            <div class="video-controls">
+<!--             <div class="video-controls">
                 <button class="video-btn" id="muteBtn" aria-label="Toggle mute">
                     🔇
                 </button>
                 <button class="video-btn" id="pauseBtn" aria-label="Pause video">
                     ⏸️
                 </button>
-            </div>
+            </div> -->
         </div>
         
         <div class="hero-content">
-            <h1>Professional Painting And General Maintanance Contractors in Cape Town – Interior, Exterior & Roof Painting</h1>
-            <p>Trusted house painters in Somerset West & Cape Peninsula offering interior painting, exterior house painting, roof waterproofing, tiling and property maintenance. Free no-obligation quotes. Call 079 034 9035 today!</p>
+            <h2>Trusted Professional Painting and General Maintenance Contractors based in the Helderberg Region.</h2>
+            <p>Your all-in-one partner for painting, waterproofing, and maintenance. From residential homes to commercial projects, we deliver quality workmanship backed by a proven track record. Free no-obligation quotes.
+                <div class="hero-buttons">
+                    <a href="tel:+27790349035" class="btn">Call 079 034 9035 today!</a>
+                </div>
+            </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn">Get Free Quote Now</a>
                 <a href="#services" class="btn btn-secondary">View Our Painting Services</a>
@@ -1655,36 +1633,36 @@ body.light-mode .social-icons a {
     
     <!-- About Section -->
     <section id="about">
-        <h2 class="section-title">About GM Painting Contractors Cape Town</h2>
+        <h2 class="section-title">About Us</h2>
         <div class="card">
             <div class="about-content">
                 <div>
                     <h3>Who are we?</h3>
-                    <p>We are professional painting contractors in Cape Town specializing in residential, commercial and industrial building painting, both interior and exterior, as well as roof painting and waterproofing.</p>
-                    <p>GM Contractors was established in 2009 and has built a reputation as an honest, professional painting company serving the Cape Town and Somerset West areas with quality workmanship and reliable service.</p>
+                    <p>Since 2009, <strong>GM Painting Contractors</strong> has been the trusted name for painting and waterproofing in the Helderberg region. Based in Somerset West, we specialize in comprehensive interior and exterior services for residential, commercial, and industrial properties.</p>
+                    <p>Our business is built on a foundation of honesty and quality workmanship. Whether it’s a full-scale industrial project or a residential roof, we deliver reliable results that stand the test of time.</p>
                 </div>
                 <div>
                     <h3>Our Approach</h3>
-                    <p>We work closely with leading paint manufacturers including Dulux, Plascon, and Midas Paints, following supplier specifications and warranties to ensure clients receive the best products and workmanship within their budget.</p>
-                    <p>Based in Somerset West, we cover the entire Cape Peninsula, bringing professional painting and maintenance services to homeowners and businesses throughout the Western Cape region.</p>
+                    <p>We believe quality begins with the right materials. That’s why we work closely with leading manufacturers—including <strong>Midas, Dulux, Plascon, Prominent Paints and Weatherprufe</strong> — strictly adhering to supplier specifications and warranties. This ensures our clients receive premium products and expert workmanship tailored to their specific budget.</p>
+                    <p>While based in Somerset West, our reach extends across the entire <strong>Cape Peninsula</strong>. We bring professional painting and maintenance services to homeowners and businesses throughout the Western Cape with a commitment to excellence.</p>
                 </div>
             </div>
         </div>
         
-        <div id="who-we-are">
+<!--         <div id="who-we-are">
             <h3>GM Painting Contractors Cape Town</h3>
             <p>We work with homeowners, contractors, realtors and residential building managers throughout Cape Town to help maintain, upgrade, and repair all types of properties.</p>
             <p>Take your vision to reality with our expertise and experience. With many years of experience in the painting industry, we can transform your space with a fresh coat of quality paint applied by skilled professional painters for a new look and feel. Whether it's big or small, inside or out, wood or wall – we can do it all.</p>
-        </div>
+        </div> -->
         
         <div class="about-expansion card" style="margin-top: 3rem;">
-            <h3>Why Choose GM Painting Contractors in Cape Town?</h3>
-            <p>As leading painting contractors in Cape Town and Somerset West, we combine years of experience with professional workmanship. Our team specializes in:</p>
+            <h3>Why Choose GM Painting Contractors?</h3>
+            <p>As leading painting contractors serving Somerset West and the grater Cape town Areas, we combine decades of industry experience with a commitment to superior workmanship. Our specialized services include:</p>
             <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
-                <li><strong>Residential Painting:</strong> Home painting services across Cape Town's Southern Suburbs, Northern Suburbs, and Somerset West</li>
-                <li><strong>Commercial Painting:</strong> Office, retail, and industrial painting projects with minimal business disruption</li>
-                <li><strong>Roof Waterproofing:</strong> Specialized roof painting and waterproofing solutions for Cape Town's coastal climate</li>
-                <li><strong>Property Maintenance:</strong> Comprehensive tiling, woodwork restoration, and general repairs</li>
+                <li><strong>Residential Painting:</strong> Expert home painting across Cape Town’s Southern Suburbs, Northern Suburbs, and Somerset West.</li>
+                <li><strong>Commercial Painting:</strong> Professional office, retail, and industrial projects managed to ensure minimal disruption to your business operations.</li>
+                <li><strong>Roof Waterproofing:</strong> Specialized painting and waterproofing solutions engineered to withstand Cape Town’s unique coastal climate.</li>
+                <li><strong>Property Maintenance:</strong> Beyond the brush—we provide professional tiling, woodwork restoration, and general repairs to keep your property in peak condition.</li>
             </ul>
             <p>We work with premium paint suppliers including Dulux, Plascon, Midas Paints, Prominent Paints, and WeatherPrufe to ensure long-lasting results that withstand Cape Town's unique weather conditions.</p>
         </div>
@@ -1692,7 +1670,7 @@ body.light-mode .social-icons a {
     
     <!-- Services Section -->
     <section id="services">
-        <h2 class="section-title">Our Painting Services in Cape Town</h2>
+        <h2 class="section-title">Our Services</h2>
         
         <div class="services-grid">
             <article class="service-card">
@@ -1701,9 +1679,12 @@ body.light-mode .social-icons a {
                     <img src="./assets/img/interior_painting.jpg" alt="Interior painting Cape Town - Residential & Commercial Painting Services" class="service-img" loading="lazy" width="400" height="200">
                 </picture>
                 <div class="service-content">
-                    <h3>Interior Painting Cape Town – Residential & Commercial</h3>
-                    <p>Give your home or workspace a new burst of colour that will compliment your style. Our professional painters in Cape Town transform spaces with meticulous preparation and clean execution. Using premium paints from Dulux, Plascon, and Midas Paints, we ensure durable, beautiful results for homes and businesses across Somerset West and the Cape Peninsula.</p>
-                    <p>We specialize in residential interior painting, commercial office painting, and retail space transformations. Our process includes thorough surface preparation, quality primer application, and expert finishing touches that last.</p>
+                    <h3>Interior Painting – Residential & Commercial</h3>
+                    <p>At GM Contractors, we combine aesthetic appeal with long-lasting protection. Whether it’s a private residence or a busy commercial hub, our team delivers a flawless finish with minimal disruption to your daily routine.</p>
+                    <p><strong>Our Specialized Interior Process: </strong></p>
+                    <p><strong>Preparation: </strong>Thorough cleaning and surface repairs for a smooth canvas.</p>
+                    <p><strong>Prime & Paint: </strong>Application of premium primers and top-tier paints from leading brands.</p>
+                    <p><strong>The Finish: </strong>Expert attention to detail on trim, ceilings, and walls for a professional, "new-build" look.</p>
                 </div>
             </article>
             
@@ -1713,9 +1694,9 @@ body.light-mode .social-icons a {
                     <img src="./assets/img/exterior_painting.jpg" alt="Exterior house painting Cape Town - Before and after transformation by GM Painting Contractors" class="service-img" loading="lazy" width="400" height="200">
                 </picture>
                 <div class="service-content">
-                    <h3>Exterior House Painting & Maintenance in Cape Town</h3>
-                    <p>Maintaining the exterior of your home or business is crucial for protecting your investment. Our Cape Town painting contractors have years of experience ensuring the correct paint system is applied to suit your budget and protect your property.</p>
-                    <p>We address Cape Town's specific weather challenges with appropriate primers, sealants, and topcoats from leading manufacturers. Our exterior painting services include thorough surface preparation, crack repair, and weather-resistant finishes that withstand coastal conditions.</p>
+                    <h3>Exterior Painting & Property Preservation</h3>
+                    <p>Maintaining your property’s exterior is the first line of defense in protecting your investment. With years of local expertise, our team ensures the correct paint systems are applied to suit your budget while providing maximum protection against the elements.</p>
+                    <p>We specialize in overcoming Cape Town’s unique coastal challenges. By using high-performance primers, sealants, and topcoats from leading manufacturers, we deliver weather-resistant finishes. Our comprehensive process includes deep surface preparation, professional crack repair, and durable coatings designed to withstand the harshest coastal conditions.</p>
                 </div>
             </article>
             
@@ -1725,9 +1706,9 @@ body.light-mode .social-icons a {
                     <img src="./assets/img/roof_painting_waterproofing.jpg" alt="Roof painting and waterproofing Cape Town - Professional roof maintenance services" class="service-img" loading="lazy" width="400" height="200">
                 </picture>
                 <div class="service-content">
-                    <h3>Roof Painting & Waterproofing Contractors Cape Town</h3>
-                    <p>Protect your property from Cape Town's rainfall with professional roof waterproofing. We clean, prepare, and paint roofs to prevent leaks and extend roof life. Our specialized negative waterproofing systems address even the most challenging roof leak situations.</p>
-                    <p>Using premium waterproofing products from WeatherPrufe and other leading manufacturers, we provide guaranteed waterproofing solutions for tile, concrete, and metal roofs throughout the Cape Peninsula.</p>
+                    <h3>Roof Painting & Waterproofing</h3>
+                    <p>Shield your property from the Western Cape's extreme weather with our professional roof painting and waterproofing services. We don't just paint; we provide a comprehensive system of cleaning, preparation, and coating designed to prevent leaks and significantly extend the life of your roof.</p>
+                    <p>Utilizing premium specialized paints and waterproofing products from leading manufacturers, we deliver guaranteed solutions for <strong>tile, concrete, and metal roofs</strong> throughout the Cape Peninsula. From residential homes to large-scale industrial properties, we ensure your roof remains watertight and aesthetically striking.</p>
                 </div>
             </article>
             
@@ -1737,9 +1718,9 @@ body.light-mode .social-icons a {
                     <img src="./assets/img/interior_exterior_woodwork.jpg" alt="Interior and exterior woodwork restoration Cape Town - Professional painting and maintenance" class="service-img" loading="lazy" width="400" height="200">
                 </picture>
                 <div class="service-content">
-                    <h3>Interior & Exterior Woodwork Restoration Cape Town</h3>
-                    <p>Wooden windows, doors and trim require regular maintenance, especially in Cape Town's coastal climate. We restore and protect exterior woodwork to prevent wood rot and extend timber lifespan.</p>
-                    <p>Our woodwork services include sanding, filling, priming with quality wood primers, and applying durable topcoats. For interior woodwork, we create beautiful contrasts and accents that enhance your home's aesthetic appeal.</p>
+                    <h3>Interior & Exterior Woodwork Restoration</h3>
+                    <p>Timber windows, doors, and trim are beautiful assets that require specialized care—especially in Cape Town’s demanding coastal climate. We specialize in restoring and protecting exterior woodwork to prevent wood rot and significantly extend the lifespan of your timber.</p>
+                    <p>Our comprehensive woodwork service includes meticulous sanding, professional filling, and priming with high-quality wood primers before applying durable, weather-resistant topcoats. For interiors, we create stunning contrasts and accents that enhance your home’s aesthetic appeal and character.</p>
                 </div>
             </article>
             
@@ -1749,9 +1730,9 @@ body.light-mode .social-icons a {
                     <img src="./assets/img/specialized_coating.jpg" alt="Specialized coatings Cape Town - Epoxy flooring and textured wall finishes" class="service-img" loading="lazy" width="400" height="200">
                 </picture>
                 <div class="service-content">
-                    <h3>Specialized Coating & Epoxy Flooring Cape Town</h3>
-                    <p>We provide expert application of specialized coatings including epoxy flooring for garages and commercial spaces, suede finishes, and various textured wall coatings.</p>
-                    <p>Transform your space with durable, attractive finishes that stand up to heavy use while providing easy maintenance. Our specialized coating services are perfect for both residential and commercial applications throughout the Cape Town area.</p>
+                    <h3>Specialized Coating & Epoxy Flooring</h3>
+                    <p>Elevate your property with high-performance coatings designed for both durability and style. From heavy-duty <strong>epoxy flooring</strong> for garages and commercial warehouses to luxurious <strong>suede and textured wall finishes</strong>, we provide specialized applications that transform any space.</p>
+                    <p>Our flooring solutions are engineered to withstand heavy use while remaining low-maintenance and visually striking. Whether you’re looking for an industrial-strength finish or a sophisticated decorative touch for your living area, our expert team delivers a flawless, high-end result throughout the Cape Town region.</p>
                 </div>
             </article>
             
@@ -1762,13 +1743,13 @@ body.light-mode .social-icons a {
                 </picture>
                 <div class="service-content">
                     <h3>Additional Property Maintenance Services</h3>
-                    <p>Beyond our core painting services, we offer comprehensive property maintenance solutions. Our team handles various projects with the same professionalism and attention to detail that defines all our work.</p>
-                    <p>From tiling and general repairs to minor alterations and project management, we provide complete property maintenance solutions for homeowners and businesses in Cape Town and Somerset West.</p>
+                    <p>At GM Contractors, we offer more than just a fresh coat of paint. We provide comprehensive property maintenance solutions, handling every project with the same professionalism and meticulous attention to detail that defines our core business.</p>
+                    <p>From expert <strong>tiling and general repairs</strong> to <strong>minor alterations and full project management</strong>, we are your single point of contact for property upkeep. Based in Somerset West, we provide seamless maintenance services for homeowners and businesses across the Cape Town region, ensuring your property remains in peak condition.
                 </div>
             </article>
         </div>
         
-        <div class="additional-services">
+<!--         <div class="additional-services">
             <h3>Additional Services We Provide in Cape Town</h3>
             <ul class="services-list">
                 <li>Tiling & Flooring</li>
@@ -1778,70 +1759,83 @@ body.light-mode .social-icons a {
                 <li>Project management</li>
                 <li>Damp proofing</li>
             </ul>
-        </div>
+        </div> -->
     </section>
     
     <!-- Warning Signs Section -->
     <section id="warning-signs">
-        <h2 class="section-title">Signs Your Cape Town Home Needs Repainting – 4 Warning Signs</h2>
+        <h2 class="section-title">Signs your Home needs Maintenance - 4 Warning signs</h2>
         <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">As professional painting contractors in Cape Town, we identify these common issues that require immediate attention</p>
         <div class="warning-cards">
             <div class="warning-card">
-                <h4>FADED PAINT</h4>
-                <p>Is generally a sign that the existing paint has aged substantially and in many cases the surface becomes "CHALKY" when rubbing your hand across the surface. To avoid further deterioration which becomes costly, contact a professional painting contractor such as GM Painting Contractors for advice.</p>
+                <h4>Identifying Faded & Chalky Paint</h4>
+                <p>Faded paint is more than just an aesthetic issue—it’s a clear sign that your property’s protective coating has broken down. In many cases, the surface becomes "chalky," leaving a powdery residue when touched.</p>
+                <p>To prevent further deterioration—which can lead to moisture damage and costly structural repairs—it is essential to take action early. Contact a professional team like GM Painting Contractors for an expert assessment and advice on restoring your property's protection.</p>
             </div>
             
             <div class="warning-card">
-                <h4>CRACKS</h4>
-                <p>Are generally due to settlement that takes place in plaster work, movement cracks and or structural cracks. Failing to repair will create a source for penetrating damp, fungi growth and possible cause for delamination of plaster work in certain areas. This also can be in the long term costly if not addressed at the early stages.</p>
+                <h4>Understanding Cracks & Plaster Damage</h4>
+                <p>Cracks are typically caused by natural plaster settlement, thermal movement, or structural shifts. If left unaddressed, these openings become a direct pathway for penetrating damp, fungal growth, and the eventual delamination of your plaster.</p>
+                <p>Proactive repair is essential. Addressing these issues in their early stages prevents moisture from compromising your property’s structural integrity and saves you from significantly higher repair costs in the future.</p>
             </div>
             
             <div class="warning-card">
                 <h4>PAINT PEELING & FLAKING</h4>
-                <p>Is normally caused by bubbles / blisters which break open and then expose the underlying surface which will become a source of moisture penetration which once getting behind the paint will cause further deterioration and once again on long term will become costly.</p>
+                <p>Peeling often begins with small bubbles or blisters that eventually break, exposing the underlying substrate. Once this barrier is breached, moisture penetrates behind the surrounding paint, causing a rapid "chain reaction" of further flaking and surface deterioration.</p>
+                <p>If not treated promptly, this cycle compromises your wall's protection and leads to extensive repair requirements. At GM Painting Contractors, we specialize in identifying the root cause—whether it’s moisture or poor prior application—and restoring a durable, waterproof finish.</p>
             </div>
             
             <div class="warning-card">
-                <h4>BLOTCHING / DISCOLOURATION OF PAINT</h4>
-                <p>This is an indication that the surfaces affected have damp in the brick and plaster work underlying which is having a chemical reaction with the colour pigment which in turn is burning the colour pigment causing the white-ish spots. Ignoring this will eventually become unsightly and affect the aesthetics of the exterior of the building.</p>
+                <h4>Blotching & Discoloration (Alkali Burn)</h4>
+                <p>White-ish spots or "blotching" on your walls are often a sign of underlying moisture within the brick and plaster. This dampness triggers a chemical reaction with the paint’s color pigments—effectively "burning" the color and leaving unsightly pale marks on the surface.</p>
+                <p>Ignoring these spots allows the moisture problem to persist, leading to a significant loss of curb appeal and potential structural damage. Our team identifies the source of the damp and applies specialized alkali-resistant primers to neutralize the reaction and restore a uniform, lasting finish.</p>
             </div>
         </div>
     </section>
     
     <!-- FAQ Section -->
     <section id="faq">
-        <h2 class="section-title">Frequently Asked Questions - Painting Services Cape Town</h2>
+        <h2 class="section-title">Frequently Asked Questions</h2>
         <div style="max-width: 800px; margin: 2rem auto;">
             <details>
-                <summary>How much does painting cost in Cape Town?</summary>
-                <p>Painting costs vary based on surface area, preparation needed, and paint quality. As professional painting contractors in Cape Town, we provide free, detailed quotes. Typically, interior painting in Cape Town ranges from R80-R150 per square meter, while exterior painting may range from R120-R200 per square meter, including preparation and materials.</p>
+                <summary>How much does professional painting cost?</summary>
+                <p>Painting costs are influenced by several key factors, including the size of the property, the total surface area, the extent of preparation required, and the quality of the paint system chosen.</p>
+                <p>Because every project is unique, we don't believe in "one-size-fits-all" pricing. As professional painting contractors, <strong>we provide free, detailed quotations</strong> and comprehensive specifications tailored specifically to your project. This ensures you receive an accurate price with no hidden surprises.</p>
             </details>
             
             <details>
-                <summary>How long does a typical painting project take?</summary>
-                <p>Most residential painting projects in Cape Town take 3-7 days, depending on size and complexity. We work efficiently with minimal disruption to your daily routine. For commercial projects in Cape Town's business areas, we offer after-hours and weekend work to avoid business interruptions.</p>
+                <summary>How long will my project take?</summary>
+                <p>Timeline is highly dependent on the size of the property, the complexity of the project, and the extent of preparation required. Our priority is to work cleanly and efficiently to ensure the highest standards with minimal disruption to your daily routine.</p>
+                <p>For our commercial clients in Cape Town’s business hubs, we understand that "time is money." To avoid any interruption to your operations, we offer flexible scheduling, including <strong>after-hours and weekend work</strong>, allowing you to transform your space without slowing down your business.</p>
             </details>
             
             <details>
                 <summary>Do you provide waterproofing guarantees?</summary>
-                <p>Yes, all our roof waterproofing work in Cape Town comes with a guarantee. We use premium waterproofing products from WeatherPrufe and other leading manufacturers, and provide warranty documentation for all completed work.</p>
+                <p>Yes, we stand behind the quality of our work. All our waterproofing projects come with a formal guarantee, providing you with long-term peace of mind.</p>
+                <p>We use premium-grade products from <strong>WeatherPrufe</strong> and other industry-leading manufacturers to ensure maximum durability against the Cape’s harsh winters. Upon completion, we provide full warranty documentation for all work performed, ensuring your investment is fully protected.</p>
             </details>
             
             <details>
-                <summary>What areas of Cape Town do you service?</summary>
-                <p>We service the entire Cape Peninsula from our Somerset West base, including Cape Town's Southern Suburbs, Northern Suburbs, City Bowl, Atlantic Seaboard, Helderberg region, Stellenbosch, and surrounding areas. <a href="#service-area">View our complete service area list</a>.</p>
+                <summary>What areas do you service?</summary>
+                <p>Based in Somerset West, GM Painting Contractors proudly serves homeowners and businesses throughout the following regions:</p>
+                <p><strong>Helderberg:</strong> Somerset West, Strand, and Gordon’s Bay, Sir Lowrys Pass</p>
+                <p><strong>Winelands:</strong> Stellenbosch and surrounding areas.</p>
+                <p><strong>Cape Town Metro:</strong> City Bowl and Atlantic Seaboard.</p>
+                <p><strong>Suburbs:</strong> Full coverage of the Southern and Northern Suburbs.</p>
+                <p><strong>Peninsula-Wide:</strong> We travel across the entire Cape Peninsula for specialized projects.</p>
             </details>
             
             <details>
                 <summary>What paint brands do you use?</summary>
-                <p>We work with all major paint manufacturers including Dulux, Plascon, Midas Paints, Prominent Paints, and WeatherPrufe. We select the best product for each specific application based on surface type, location, and client preferences.</p>
+                <p>We partner with South Africa’s leading paint manufacturers, including Dulux, Plascon, Midas, and Prominent Paints, as well as specialized waterproofing systems like WeatherPrufe.</p>
+                <p>We don't believe in a "one-size-fits-all" product. Instead, we carefully select the optimal paint system for every project based on the specific surface type, environmental exposure, and your aesthetic preferences. This customized approach ensures a finish that is both beautiful and built to last.</p>
             </details>
         </div>
     </section>
     
     <!-- Reviews Section -->
     <section id="reviews">
-        <h2 class="section-title">What Our Cape Town Clients Say</h2>
+        <h2 class="section-title">What Our Clients Say</h2>
         <div class="reviews-grid" id="reviewsGrid">
             <!-- Reviews will be dynamically loaded here from JSON -->
         </div>
@@ -1849,7 +1843,7 @@ body.light-mode .social-icons a {
     
     <!-- Completed Jobs Section -->
     <section id="completed-jobs">
-        <h2 class="section-title">Our Completed Projects in Cape Town</h2>
+        <h2 class="section-title">Our Completed Projects</h2>
         <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">Browse through some of our recent painting and maintenance projects in Cape Town and Somerset West</p>
         <div class="jobs-grid" id="jobsGrid">
             <!-- Jobs will be dynamically loaded here from JSON -->
@@ -1909,15 +1903,15 @@ body.light-mode .social-icons a {
     
     <!-- Contact Section -->
     <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
+        <h2 class="section-title">Contact Us Today</h2>
         
         <div class="contact-container">
             <div class="contact-info">
-                <div class="contact-card-container">
+<!--                 <div class="contact-card-container">
                     <div class="contact-card">
                         <img src="./assets/img/GarethLindemann_contact.png" alt="Gareth Lindemann Contact Card - Owner of GM Painting Contractors Cape Town">
                     </div>
-                </div>
+                </div> -->
                 
                 <div class="contact-item">
                     <div class="contact-icon">✉️</div>
@@ -2003,10 +1997,10 @@ body.light-mode .social-icons a {
             </div>
         </div>
         
-        <div class="cta-buttons">
+<!--         <div class="cta-buttons">
             <a href="#contact" class="btn btn-large">BOOK NOW</a>
             <a href="tel:+27790349035" class="btn btn-large btn-secondary">CALL US</a>
-        </div>
+        </div> -->
     </section>
     
     <!-- Footer -->
@@ -2035,31 +2029,31 @@ body.light-mode .social-icons a {
     <div class="social-icons" style="display: flex; justify-content: center; gap: 1.5rem;">
         <!-- Facebook -->
         <a href="https://facebook.com/gmcontractorss" target="_blank" rel="noopener noreferrer" 
-           style="color: var(--text-primary); font-size: 1.8rem; transition: color 0.3s ease;">
+           style="font-size: 1.8rem; transition: color 0.3s ease;">
             <i class="fa-brands fa-facebook-f" aria-label="Facebook"></i>
         </a>
         
         <!-- Instagram -->
-        <a href="https://instagram.com/gmcontractorss" target="_blank" rel="noopener noreferrer"
-           style="color: var(--text-primary); font-size: 1.8rem; transition: color 0.3s ease;">
+        <a href="https://instagram.com/gmpaintingcontractors" target="_blank" rel="noopener noreferrer"
+           style="font-size: 1.8rem; transition: color 0.3s ease;">
             <i class="fa-brands fa-instagram" aria-label="Instagram"></i>
         </a>
         
         <!-- LinkedIn -->
-        <a href="https://linkedin.com/company/gmcontractorss" target="_blank" rel="noopener noreferrer"
+<!--         <a href="https://linkedin.com/company/gmcontractorss" target="_blank" rel="noopener noreferrer"
            style="color: var(--text-primary); font-size: 1.8rem; transition: color 0.3s ease;">
             <i class="fa-brands fa-linkedin-in" aria-label="LinkedIn"></i>
-        </a>
+        </a> -->
         
         <!-- X (Twitter) -->
-        <a href="https://twitter.com/gmcontractorss" target="_blank" rel="noopener noreferrer"
+<!--         <a href="https://twitter.com/gmcontractorss" target="_blank" rel="noopener noreferrer"
            style="color: var(--text-primary); font-size: 1.8rem; transition: color 0.3s ease;">
             <i class="fa-brands fa-x-twitter" aria-label="X (formerly Twitter)"></i>
-        </a>
+        </a> -->
         
         <!-- WhatsApp -->
         <a href="https://wa.me/27790349035" target="_blank" rel="noopener noreferrer"
-           style="color: var(--text-primary); font-size: 1.8rem; transition: color 0.3s ease;">
+           style="font-size: 1.8rem; transition: color 0.3s ease;">
             <i class="fa-brands fa-whatsapp" aria-label="WhatsApp"></i>
         </a>
     </div>
@@ -2174,7 +2168,7 @@ body.light-mode .social-icons a {
     }
     </script>
     
-    <script>
+<!--     <script>
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -2203,6 +2197,59 @@ body.light-mode .social-icons a {
                 localStorage.setItem('theme', 'light');
             }
         });
+    </script> -->
+    
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+
+        // Apply saved theme: if 'dark', add dark-mode class
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+        } else {
+            body.classList.remove('dark-mode'); // ensure light mode (default)
+        }
+
+        // Toggle theme on button click
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDarkMode = body.classList.contains('dark-mode');
+
+                if (isDarkMode) {
+                    // Switch to light mode
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    // Switch to dark mode
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
         
         // Current year for copyright
         document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -2246,38 +2293,38 @@ body.light-mode .social-icons a {
             });
         });
         
-        // Video Background Controls
-        const heroVideo = document.getElementById('heroVideo');
-        const muteBtn = document.getElementById('muteBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        let isMuted = true;
-        let isPaused = false;
+        // // Video Background Controls
+        // const heroVideo = document.getElementById('heroVideo');
+        // const muteBtn = document.getElementById('muteBtn');
+        // const pauseBtn = document.getElementById('pauseBtn');
+        // let isMuted = true;
+        // let isPaused = false;
         
-        // Mute/Unmute button functionality
-        muteBtn.addEventListener('click', () => {
-            if (isMuted) {
-                heroVideo.muted = false;
-                muteBtn.innerHTML = '🔊';
-                isMuted = false;
-            } else {
-                heroVideo.muted = true;
-                muteBtn.innerHTML = '🔇';
-                isMuted = true;
-            }
-        });
+        // // Mute/Unmute button functionality
+        // muteBtn.addEventListener('click', () => {
+        //     if (isMuted) {
+        //         heroVideo.muted = false;
+        //         muteBtn.innerHTML = '🔊';
+        //         isMuted = false;
+        //     } else {
+        //         heroVideo.muted = true;
+        //         muteBtn.innerHTML = '🔇';
+        //         isMuted = true;
+        //     }
+        // });
         
-        // Pause/Play button functionality
-        pauseBtn.addEventListener('click', () => {
-            if (isPaused) {
-                heroVideo.play();
-                pauseBtn.innerHTML = '⏸️';
-                isPaused = false;
-            } else {
-                heroVideo.pause();
-                pauseBtn.innerHTML = '▶️';
-                isPaused = true;
-            }
-        });
+        // // Pause/Play button functionality
+        // pauseBtn.addEventListener('click', () => {
+        //     if (isPaused) {
+        //         heroVideo.play();
+        //         pauseBtn.innerHTML = '⏸️';
+        //         isPaused = false;
+        //     } else {
+        //         heroVideo.pause();
+        //         pauseBtn.innerHTML = '▶️';
+        //         isPaused = true;
+        //     }
+        // });
         
         // Parallax effect for video background
         const homeSection = document.getElementById('home');
@@ -2352,35 +2399,84 @@ body.light-mode .social-icons a {
             });
         }
         
-        // Contact Form Handling (Frontend Only)
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+        // // Contact Form Handling (Frontend Only)
+        // const contactForm = document.getElementById('contactForm');
+        // if (contactForm) {
+        //     contactForm.addEventListener('submit', function(e) {
+        //         e.preventDefault();
                 
-                // Form validation
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const suburb = document.getElementById('suburb').value.trim();
-                const message = document.getElementById('message').value.trim();
+        //         // Form validation
+        //         const name = document.getElementById('name').value.trim();
+        //         const email = document.getElementById('email').value.trim();
+        //         const suburb = document.getElementById('suburb').value.trim();
+        //         const message = document.getElementById('message').value.trim();
                 
-                if (!name || !email || !suburb || !message) {
-                    alert('Please fill in all required fields marked with *.');
-                    return;
-                }
+        //         if (!name || !email || !suburb || !message) {
+        //             alert('Please fill in all required fields marked with *.');
+        //             return;
+        //         }
                 
-                if (!isValidEmail(email)) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
+        //         if (!isValidEmail(email)) {
+        //             alert('Please enter a valid email address.');
+        //             return;
+        //         }
                 
-                // In a real implementation, you would send data to a backend
-                alert('Thank you for your message! \n\nWe\'ll respond within 24 hours.');
+        //         // In a real implementation, you would send data to a backend
+        //         alert('Thank you for your message! In a real implementation, this would be sent to our team.\n\nWe\'ll respond within 24 hours.');
                 
-                // Reset form
-                contactForm.reset();
-            });
+        //         // Reset form
+        //         contactForm.reset();
+        //     });
+        // }
+
+
+
+// Contact Form Handling – opens default email app
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Form validation
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const suburb = document.getElementById('suburb').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !suburb || !message) {
+            alert('Please fill in all required fields marked with *.');
+            return;
         }
+
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        // Build the email body
+        const subject = `Contact from ${name}`;
+        const body = `Name: ${name}%0AEmail: ${email}%0ASuburb: ${suburb}%0AMessage:%0A${message}`;
+
+        // Replace with your actual email address
+        const recipient = 'info@artilect.co.za';
+
+        // Create mailto link
+        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+        // Open default email client
+        window.location.href = mailtoLink;
+
+        // Optionally reset the form (though user may cancel email)
+        contactForm.reset();
+    });
+}
+
+
+
+
+
+
+
         
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -2541,7 +2637,7 @@ body.light-mode .social-icons a {
                         <div class="review-header">
                             <div class="reviewer-info">
                                 <h4>${review.name}</h4>
-                                <div class="review-date">${review.date}</div>
+                                <!--div class="review-date">${review.date}</div-->
                             </div>
                             ${createStarRating(review.rating)}
                         </div>
