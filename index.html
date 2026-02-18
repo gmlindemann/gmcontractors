@@ -54,7 +54,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
- <style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DB0KRXG1WZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DB0KRXG1WZ');
+    </script>
+    
+    <style>
         /* CSS Reset & Base */
         * {
             margin: 0;
@@ -1535,7 +1544,6 @@
             <img src="./assets/img/logo_full.png" alt="GM Painting Contractors Logo - Professional Painters Cape Town" class="logo-img">
 
             <!-- <div class="logo-text"><span>GM</span> Painting Contractors</div> -->
-
 <!-- 
             <div class="logo-text">
                 <span class="gm-wrap">
@@ -1543,10 +1551,6 @@
                 </span>
                 <span class="slogan">PAINTING CONTRACTORS</span>
             </div> -->
-
-
-
-
         </div>
         
         <nav class="desktop-nav">
@@ -1952,7 +1956,8 @@
             
             <div class="contact-form">
                 <h3>Send a Message</h3>
-                <form id="contactForm" aria-label="Contact form">
+                <!-- <form id="contactForm" aria-label="Contact form"> -->
+                <form action="https://formsubmit.co/gareth@gmcontractors.co.za" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required aria-required="true">
@@ -2432,45 +2437,45 @@
 
 
 
-// Contact Form Handling – opens default email app
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+// // Contact Form Handling – opens default email app
+// const contactForm = document.getElementById('contactForm');
+// if (contactForm) {
+//     contactForm.addEventListener('submit', function(e) {
+//         e.preventDefault();
 
-        // Form validation
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const suburb = document.getElementById('suburb').value.trim();
-        const message = document.getElementById('message').value.trim();
+//         // Form validation
+//         const name = document.getElementById('name').value.trim();
+//         const email = document.getElementById('email').value.trim();
+//         const suburb = document.getElementById('suburb').value.trim();
+//         const message = document.getElementById('message').value.trim();
 
-        if (!name || !email || !suburb || !message) {
-            alert('Please fill in all required fields marked with *.');
-            return;
-        }
+//         if (!name || !email || !suburb || !message) {
+//             alert('Please fill in all required fields marked with *.');
+//             return;
+//         }
 
-        if (!isValidEmail(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
+//         if (!isValidEmail(email)) {
+//             alert('Please enter a valid email address.');
+//             return;
+//         }
 
-        // Build the email body
-        const subject = `Contact from ${name}`;
-        const body = `Name: ${name}%0AEmail: ${email}%0ASuburb: ${suburb}%0AMessage:%0A${message}`;
+//         // Build the email body
+//         const subject = `Contact from ${name}`;
+//         const body = `Name: ${name}%0AEmail: ${email}%0ASuburb: ${suburb}%0AMessage:%0A${message}`;
 
-        // Replace with your actual email address
-        const recipient = 'gareth@gmcontractors.co.za';
+//         // Replace with your actual email address
+//         const recipient = 'gareth@gmcontractors.co.za';
 
-        // Create mailto link
-        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+//         // Create mailto link
+//         const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
-        // Open default email client
-        window.location.href = mailtoLink;
+//         // Open default email client
+//         window.location.href = mailtoLink;
 
-        // Optionally reset the form (though user may cancel email)
-        contactForm.reset();
-    });
-}
+//         // Optionally reset the form (though user may cancel email)
+//         contactForm.reset();
+//     });
+// }
 
 
 
