@@ -1061,7 +1061,14 @@
         
         /* Contact Section */
         #contact .contact-container {
-            background-color: rgb(88, 89, 91, 0.5);
+            background-color: var(--card-bg);
+            border-radius: var(--card-radius);
+            padding: 2rem;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            position: relative;
+            z-index: 1;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+/*            background-color: rgb(88, 89, 91, 0.5);*/
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
