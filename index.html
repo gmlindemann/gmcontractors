@@ -1611,7 +1611,7 @@
     <!-- Hero Section with Video Background -->
     <section id="home">
         <div class="video-wrapper">
-            <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+            <video class="hero-video" id="heroVideo" autoplay muted playsinline>
                 <source src="./assets/video/hero_video_GM_Contractors.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -2218,6 +2218,41 @@
 
 
 <script>
+
+
+// Pause & restart video after 3 seconds
+const video = document.getElementById('heroVideo');
+if (video) {
+    video.loop = false;
+    const delayMs = 3000; // 3 seconds
+    let restartTimeout = null;
+
+    const restartVideo = () => {
+        restartTimeout = setTimeout(() => {
+            video.play().catch(e => console.warn('Playback failed:', e));
+        }, delayMs);
+    };
+
+    video.addEventListener('ended', () => {
+        if (restartTimeout) clearTimeout(restartTimeout);
+        restartVideo();
+    });
+
+    video.addEventListener('play', () => {
+        if (restartTimeout) {
+            clearTimeout(restartTimeout);
+            restartTimeout = null;
+        }
+    });
+}
+
+
+
+
+
+
+
+    
     document.addEventListener('DOMContentLoaded', function() {
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
